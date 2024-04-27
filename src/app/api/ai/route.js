@@ -22,7 +22,7 @@ USER: ${req.nextUrl.searchParams.get("question")}
     console.log(`\nPrompt: ${prompt}\n`)
 
     const answer = await getResponse(prompt)
-    return Response.json({ answer: answer });
+    return Response.json({ answer: answer.replace("GEMINI: ", "").replace("GOOGLE GEMINI: ", "") });
 }
 
 async function getResponse(prompt) {
